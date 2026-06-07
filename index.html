@@ -62,7 +62,7 @@
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--navy); }
 
         /* HERO SECTION */
-        .hero { padding: 140px 0 80px; background: linear-gradient(rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; color: var(--white); text-align: center; }
+        .hero { padding: 140px 0 80px; background: linear-gradient(rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; text-align: center; color: var(--white); }
         .hero h1 { color: var(--white); margin-bottom: 20px; }
         .hero p { color: #ddd; font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
         .hero-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
@@ -88,6 +88,16 @@
         /* RISK PROFILER & LEAD GEN */
         .lead-form { max-width: 600px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
         
+        /* FAQ SECTION */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--white); margin-bottom: 20px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .faq-question { padding: 20px; cursor: pointer; background: var(--light-bg); display: flex; justify-content: space-between; align-items: center; transition: var(--transition); font-weight: 600; }
+        .faq-question:hover { background: #e8ecf1; }
+        .faq-answer { padding: 20px; display: none; color: #555; line-height: 1.8; }
+        .faq-answer.active { display: block; }
+        .faq-icon { color: var(--gold); font-size: 1.2rem; transition: var(--transition); }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+
         /* SOCIAL PROOF */
         .social-proof { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
         .stat-item h3 { font-size: 2.5rem; color: var(--gold); margin-bottom: 5px; }
@@ -108,6 +118,9 @@
         .mobile-cta { display: none; position: fixed; bottom: 0; width: 100%; background: var(--white); padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000; justify-content: space-around; }
         .mobile-cta a { flex: 1; margin: 0 5px; text-align: center; padding: 12px 0; font-size: 0.9rem; border-radius: 5px; font-weight: 600; }
 
+        /* LOGO IMAGE STYLING */
+        .logo-img { max-width: 150px; height: auto; margin-bottom: 30px; }
+
         @media (max-width: 768px) {
             .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
             .nav-links.active { display: flex; }
@@ -115,6 +128,8 @@
             .calc-container { grid-template-columns: 1fr; }
             .mobile-cta { display: flex; }
             body { padding-bottom: 60px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -130,8 +145,8 @@
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#calculators">Goal Planners</a>
+                <a href="#faq">FAQ</a>
                 <a href="#risk">Risk Assessment</a>
-                <a href="#insurance">Insurance</a>
                 <a href="#booking" class="btn btn-gold" style="padding: 8px 15px; margin-top: -8px;">Book Consult</a>
             </div>
         </div>
@@ -139,6 +154,7 @@
 
     <header class="hero">
         <div class="container">
+            <img src="logo.jpg" alt="LRY Fintech Advisory Logo" class="logo-img">
             <h1>Goal Based Financial Planning<br>For Every Stage Of Life</h1>
             <p>Where Smart Money Meets Smart Advice. Transform your financial future with personalized strategies for wealth creation, child education, and retirement.</p>
             <div class="hero-btns">
@@ -198,6 +214,83 @@
                         </div>
                     <div style="text-align: center; margin-top: 20px;">
                         <button onclick="captureLeadPrompt()" class="btn btn-gold w-100">Generate Personalized Proposal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-light">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What are the benefits of starting mutual fund investments early?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Starting early allows you to benefit from the power of compound interest. With more time, your investments have greater opportunity to grow exponentially. Even small monthly SIP contributions can accumulate into significant wealth over 10-20 years, helping you achieve long-term financial goals like child education and retirement.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I choose the right investment portfolio based on my risk profile?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Your risk profile depends on factors like your age, income stability, investment horizon, and financial goals. Our Free Risk Assessment tool helps identify whether you're a conservative, moderate, or aggressive investor. We then recommend a suitable asset allocation across equities, debt, and other instruments aligned with your risk tolerance and goals.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is SIP (Systematic Investment Plan) and why is it better than lump sum investing?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        SIP is investing a fixed amount regularly (monthly or quarterly). It's advantageous because it promotes financial discipline, reduces the impact of market volatility through rupee cost averaging, and eliminates the pressure of timing the market. You invest the same amount regardless of market conditions, buying more units when prices are low and fewer when high.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How much insurance coverage do I really need?</span>
+                        <i class="fa-silent fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Insurance coverage should typically be 10-12 times your annual income. This ensures your family's financial security in case of an unfortunate event. Our Insurance Analysis tool calculates your exact coverage needs based on your liabilities, outstanding loans, family expenses, and future goals. We recommend a mix of term life and health insurance for comprehensive protection.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is tax-saving investing and how can I benefit from it?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Tax-saving investments like ELSS (Equity Linked Saving Schemes), PPF, and NPS allow you to claim deductions under Section 80C of the Income Tax Act. You can save up to ₹1.5 lakhs in taxes annually while building wealth. Our advisors help you optimize your tax strategy by recommending the best combination of tax-efficient investments aligned with your goals.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How often should I review my investment portfolio?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We recommend reviewing your portfolio at least annually or whenever there's a significant life change (marriage, child birth, job change, etc.). Market fluctuations are normal and long-term investors shouldn't panic. However, periodic rebalancing ensures your portfolio remains aligned with your goals and risk profile. Our quarterly review sessions keep you on track.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What sets LRY Fintech Advisory apart from other financial advisors?</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        LRY Fintech Advisory offers personalized goal-based planning rather than generic advice. We use advanced calculators and risk profilers to understand your unique situation. As AMFI-registered mutual fund distributors, we provide unbiased recommendations. Our advisors are committed to long-term wealth creation through transparent communication and regular portfolio reviews.
                     </div>
                 </div>
             </div>
@@ -278,14 +371,16 @@
                     <ul class="footer-links">
                         <li><a href="#services">Investment Solutions</a></li>
                         <li><a href="#calculators">Financial Calculators</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdUmKtyTc8dBwgADftvWJVPDG83tjE5ShJfNVI6EqPeHdBl2w/viewform" target="_blank">Risk Profiler</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Contact Us</h4>
                     <ul class="footer-links">
-                        <li><i class="fa-solid fa-location-dot"></i> Kanuru, Andhra Pradesh, India</li>
+                        <li><i class="fa-solid fa-location-dot"></i> Vijayawada, Governor Peta, Andhra Pradesh, India</li>
                         <li><i class="fa-brands fa-whatsapp"></i> +91 8555037991</li>
+                        <li><i class="fa-solid fa-envelope"></i> info@lryfintech.com</li>
                     </ul>
                 </div>
             </div>
@@ -463,6 +558,14 @@
             `;
             // Visualization: Just showing the massive corpus vs annual expense to highlight need
             renderChart(null, futureMonthlyExp * 12, requiredCorpus - (futureMonthlyExp * 12), '1st Year Exp', 'Remaining Corpus Needed');
+        }
+
+        // --- FAQ TOGGLE ---
+        function toggleFAQ(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+            const answer = item.querySelector('.faq-answer');
+            answer.classList.toggle('active');
         }
 
         // --- LEAD GENERATION LOGIC ---
