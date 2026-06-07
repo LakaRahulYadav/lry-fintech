@@ -1,339 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LRY FinTech Advisory Services | Smart Wealth Planning</title>
-    <meta name="description"
-        content="LRY FinTech Advisory Services - Personalized financial guidance for Telugu families, professionals, and business owners. Mutual Funds, Insurance, PMS, and more.">
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;700&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <title>LRY Fintech Advisory | Where Smart Money Meets Smart Advice</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+
+    <style>
+        /* BRAND IDENTITY & VARIABLES */
+        :root {
+            --navy: #0B1F3A;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --black: #111111;
+            --light-bg: #f4f6f9;
+            --ig-gradient: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+            --transition: all 0.3s ease;
+        }
+
+        /* RESET & GLOBAL */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { color: var(--black); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 { color: var(--navy); margin-bottom: 15px; }
+        h1 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; }
+        h2 { font-size: 2rem; text-align: center; margin-bottom: 40px; }
+        p { margin-bottom: 15px; color: #444; }
+
+        /* BUTTONS */
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 5px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; text-align: center; }
+        .btn-gold { background-color: var(--gold); color: var(--navy); }
+        .btn-gold:hover { background-color: #b5952f; transform: translateY(-2px); }
+        .btn-navy { background-color: var(--navy); color: var(--white); }
+        .btn-navy:hover { background-color: #081629; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
+        .btn-ig { background: var(--ig-gradient); color: var(--white); }
+        .btn-wa { background-color: #25D366; color: var(--white); }
+
+        /* LAYOUT & SECTIONS */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        .bg-light { background-color: var(--light-bg); }
+
+        /* NAVIGATION (Sticky) */
+        nav { position: fixed; top: 0; width: 100%; background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; padding: 15px 0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--gold); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--navy); }
+
+        /* HERO SECTION */
+        .hero { padding: 140px 0 80px; background: linear-gradient(rgba(11, 31, 58, 0.9), rgba(11, 31, 58, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; color: var(--white); text-align: center; }
+        .hero h1 { color: var(--white); margin-bottom: 20px; }
+        .hero p { color: #ddd; font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-btns { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+        /* SERVICES GRID */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: var(--transition); border-bottom: 4px solid transparent; }
+        .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--gold); }
+        .service-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+
+        /* CALCULATOR HUB & GOAL ENGINE */
+        .calc-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .calc-tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        .calc-tab { padding: 10px 20px; background: var(--light-bg); border-radius: 5px; cursor: pointer; font-weight: 600; border: 1px solid #ddd; }
+        .calc-tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+        .chart-container { position: relative; height: 300px; width: 100%; }
+        .results-box { background: var(--navy); color: var(--white); padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; }
+        .results-box h3 { color: var(--gold); margin-bottom: 10px; }
+
+        /* RISK PROFILER & LEAD GEN */
+        .lead-form { max-width: 600px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        
+        /* SOCIAL PROOF */
+        .social-proof { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; color: var(--gold); margin-bottom: 5px; }
+
+        /* FOOTER */
+        footer { background: var(--navy); color: var(--white); padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-grid h4 { color: var(--gold); margin-bottom: 20px; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #bbb; transition: var(--transition); }
+        .footer-links a:hover { color: var(--gold); }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-icons a:hover { background: var(--gold); color: var(--navy); }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #888; font-size: 0.9rem; }
+
+        /* MOBILE STICKY CTA */
+        .mobile-cta { display: none; position: fixed; bottom: 0; width: 100%; background: var(--white); padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000; justify-content: space-around; }
+        .mobile-cta a { flex: 1; margin: 0 5px; text-align: center; padding: 12px 0; font-size: 0.9rem; border-radius: 5px; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: var(--white); flex-direction: column; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .calc-container { grid-template-columns: 1fr; }
+            .mobile-cta { display: flex; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <img src="assets/logo_bw.jpg" alt="LRY FinTech Logo" class="logo-img">
-            </div>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-chart-line" style="color: var(--gold);"></i>
+                LRY <span>Fintech Advisory</span>
+            </a>
+            <i class="fa-solid fa-bars menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')"></i>
             <div class="nav-links">
                 <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact" class="btn btn-outline">Contact Us</a>
+                <a href="#calculators">Goal Planners</a>
+                <a href="#risk">Risk Assessment</a>
+                <a href="#insurance">Insurance</a>
+                <a href="#booking" class="btn btn-gold" style="padding: 8px 15px; margin-top: -8px;">Book Consult</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Smart Wealth Planning for <br>
-                    <span class="highlight">Telugu Families & Professionals</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    తెలుగు కుటుంబాల & ఉద్యోగుల కోసం సింపుల్ & స్మార్ట్ ఫైనాన్షియల్ ప్లానింగ్
-                </h2>
-                <p class="hero-desc">
-                    We provide personalized financial guidance for Salaried Employees, Families, Business Owners, and
-                    HNIs.
-                </p>
-                <ul class="hero-benefits">
-                    <li><i class="fas fa-check"></i> Clarity in Investments</li>
-                    <li><i class="fas fa-check"></i> Peace of Mind</li>
-                    <li><i class="fas fa-check"></i> Smart Future Planning</li>
-                </ul>
-                <div class="hero-cta-group">
-                    <a href="#book" class="btn btn-primary">Book Free 30-Min Session</a>
-                    <a href="https://wa.me/918555037991" target="_blank" class="btn btn-secondary"><i
-                            class="fab fa-whatsapp"></i> WhatsApp Chat</a>
-                </div>
-                <div class="social-row">
-                    <a href="https://www.facebook.com/share/19itv77M43/?mibextid=wwXIfr" target="_blank"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/lryfintech" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/rahulyadavlaka-73922217a" target="_blank"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/918555037991" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="hero-image-wrapper">
-                <div class="profile-frame">
-                    <img src="assets/advisor_profile.png" alt="Laka Rahul Yadav" class="profile-img">
-                </div>
-                <div class="advisor-info">
-                    <h3>Laka Rahul Yadav</h3>
-                    <p>Founder & Investment Advisor</p>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Vijayawada, AP</p>
-                </div>
+        <div class="container">
+            <h1>Goal Based Financial Planning<br>For Every Stage Of Life</h1>
+            <p>Where Smart Money Meets Smart Advice. Transform your financial future with personalized strategies for wealth creation, child education, and retirement.</p>
+            <div class="hero-btns">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdUmKtyTc8dBwgADftvWJVPDG83tjE5ShJfNVI6EqPeHdBl2w/viewform" target="_blank" class="btn btn-gold">Take Free Risk Assessment</a>
+                <a href="#booking" class="btn btn-outline" style="color: var(--white); border-color: var(--white);">Book Free Consultation</a>
+                <a href="https://wa.me/+918555037991" target="_blank" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Advisor</a>
             </div>
         </div>
     </header>
 
-    <!-- Services Section (Side Scrolling) -->
-    <section id="services" class="section services-section">
+    <section id="services" class="bg-light">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Solutions</h2>
-                <p class="section-subtitle">Comprehensive Financial Services / మా సేవలు</p>
-            </div>
-            <div class="services-carousel">
-                <!-- Service 1 -->
+            <h2>Comprehensive Wealth Solutions</h2>
+            <div class="services-grid">
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-chart-line"></i></div>
-                    <h3>Mutual Funds</h3>
-                    <ul>
-                        <li>Wealth Creation</li>
-                        <li>SIP & Lumpsum</li>
-                        <li>Tax Saving (ELSS)</li>
-                    </ul>
+                    <i class="fa-solid fa-bullseye service-icon"></i>
+                    <h3>Goal Based Planning</h3>
+                    <p>Map your investments to life events like Child Education & Marriage.</p>
                 </div>
-                <!-- Service 2 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+                    <i class="fa-solid fa-chart-pie service-icon"></i>
+                    <h3>Mutual Funds & SIPs</h3>
+                    <p>Optimized portfolio creation using advanced Asset Allocation strategies.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-shield-heart service-icon"></i>
+                    <h3>Insurance Analysis</h3>
+                    <p>Protect your family's downside with precise Term and Health cover calculations.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-building-columns service-icon"></i>
                     <h3>PMS & AIF</h3>
-                    <ul>
-                        <li>Portfolio Management</li>
-                        <li>High Net-worth Investing</li>
-                        <li>Exclusive Strategies</li>
-                    </ul>
-                </div>
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-file-contract"></i></div>
-                    <h3>Corporate FDs & Bonds</h3>
-                    <ul>
-                        <li>Fixed Income</li>
-                        <li>Higher Returns than Bank</li>
-                        <li>Safety & Stability</li>
-                    </ul>
-                </div>
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Insurance</h3>
-                    <ul>
-                        <li>Term Life Insurance</li>
-                        <li>Health & Vehicle</li>
-                        <li>Family Protection</li>
-                    </ul>
-                </div>
-                <!-- Service 5 -->
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h3>Loans against MF</h3>
-                    <ul>
-                        <li>Emergency Cash</li>
-                        <li>Low Interest Rates</li>
-                        <li>No Selling Required</li>
-                    </ul>
+                    <p>Exclusive investment vehicles for High Net-Worth Individuals.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem - Solution Section -->
-    <section class="section problem-solution">
-        <div class="container grid-2-split">
-            <div class="problem-side">
-                <h2>The Problem</h2>
-                <p class="sub-text">Why families lose money</p>
-                <ul class="pain-points">
-                    <li><i class="fas fa-times-circle"></i> Confusion about where to invest</li>
-                    <li><i class="fas fa-times-circle"></i> Losses in Chit Funds & Ponzi Schemes</li>
-                    <li><i class="fas fa-times-circle"></i> Wrong Insurance Policies (Low Returns)</li>
-                    <li><i class="fas fa-times-circle"></i> No clear plan for Retirement or Kids</li>
-                </ul>
-            </div>
-            <div class="solution-side">
-                <h2>The LRY Solution</h2>
-                <p class="sub-text">How we help you win</p>
-                <ul class="gain-points">
-                    <li><i class="fas fa-check-circle"></i> Personalized Goal Roadmap</li>
-                    <li><i class="fas fa-check-circle"></i> AMFI Certified Expert Advice</li>
-                    <li><i class="fas fa-check-circle"></i> Data-backed Mutual Fund Selection</li>
-                    <li><i class="fas fa-check-circle"></i> Regular Portfolio Review</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offer Section -->
-    <section class="section offer-section">
+    <section id="calculators">
         <div class="container">
-            <div class="offer-box">
-                <span class="offer-tag">Exclusive Offer</span>
-                <h2>Free 30-Min Financial Health Check-up</h2>
-                <p class="offer-value">Get a custom SIP plan, insurance review, and goal roadmap.</p>
-                <p class="offer-price">Value <span class="strike">₹999</span> — <strong>FREE</strong> for first 500
-                    people</p>
-                <a href="#book" class="btn btn-white">Book Free Consultation Now</a>
-                <p class="offer-note">* Online sessions for Telugu clients across AP & Telangana</p>
+            <h2>Smart Goal Planners & Calculators</h2>
+            <div class="calc-tabs">
+                <div class="calc-tab active" onclick="switchTab('sip')">SIP Calculator</div>
+                <div class="calc-tab" onclick="switchTab('education')">Child Education</div>
+                <div class="calc-tab" onclick="switchTab('retirement')">Retirement</div>
+            </div>
+
+            <div class="calc-container">
+                <div id="calc-inputs">
+                    </div>
+
+                <div>
+                    <div class="chart-container">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+                    <div class="results-box" id="calc-results">
+                        </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button onclick="captureLeadPrompt()" class="btn btn-gold w-100">Generate Personalized Proposal</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Advisor -->
-    <section id="about" class="section about-section">
-        <div class="container about-grid">
-            <div class="about-img">
-                <img src="assets/advisor_profile.png" alt="Laka Rahul Yadav">
-            </div>
-            <div class="about-text">
-                <h3>Meet Your Advisor</h3>
-                <h2>Laka Rahul Yadav</h2>
-                <p class="role">Founder & Investment Advisor – LRY FinTech Advisory</p>
-                <div class="credentials">
-                    <span><i class="fas fa-certificate"></i> AMFI Certified</span>
-                    <span><i class="fas fa-shield-alt"></i> Insurance Advisor</span>
-                </div>
-                <p class="bio">
-                    "Namaskaram! I started LRY FinTech with a single mission: to help Telugu families build real wealth.
-                    Too many people work hard for money but let it sleep in savings accounts or lose it in risky
-                    schemes.
-                    I am here to change that. I provide honest, transparent, and expert advice to help you achieve your
-                    financial freedom."
+    <section id="risk" class="bg-light">
+        <div class="container">
+            <h2>Get Your Free Financial Blueprint</h2>
+            <div class="lead-form">
+                <p style="text-align: center; margin-bottom: 20px;">Enter your details to download your customized investment proposal and asset allocation strategy.</p>
+                <form id="leadCaptureForm" onsubmit="handleLeadSubmit(event)">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="leadName" required placeholder="e.g. Rahul Sharma">
+                    </div>
+                    <div class="input-group">
+                        <label>WhatsApp Number</label>
+                        <input type="tel" id="leadPhone" required placeholder="+91">
+                    </div>
+                    <div class="input-group">
+                        <label>Primary Goal</label>
+                        <select id="leadGoal">
+                            <option>Wealth Creation</option>
+                            <option>Child Education</option>
+                            <option>Retirement Planning</option>
+                            <option>Tax Saving</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-navy" style="width: 100%;">Generate Proposal</button>
+                </form>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #666;">
+                    *By submitting, you agree to be contacted via WhatsApp by LRY Fintech Advisory.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- 4-Step Process -->
-    <section class="section process-section">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-num">01</div>
-                    <h4>Book Free Call</h4>
-                    <p>Schedule your 30-min session.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">02</div>
-                    <h4>Risk Profiling</h4>
-                    <p>We understand your goals & risk.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">03</div>
-                    <h4>Get Your Plan</h4>
-                    <p>Receive a personalized roadmap.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-num">04</div>
-                    <h4>Start Investing</h4>
-                    <p>Execute and track progress.</p>
-                </div>
+    <section id="booking">
+        <div class="container" style="text-align: center;">
+            <h2>Book A Consultation</h2>
+            <p style="margin-bottom: 30px;">Schedule a 1-on-1 Portfolio Review or Financial Planning Session with Laka Rahul Yadav.</p>
+            
+            <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+            <script>
+            (function() {
+              var target = document.currentScript;
+              window.addEventListener('load', function() {
+                calendar.schedulingButton.load({
+                  url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1hW5FCcnnp7WyhpBeJKfOyUstupk5PrXFatslZMysDHFNfxWv7jH-J2RVGa_wIur8Wq8eXChyX?gv=true',
+                  color: '#D4AF37', /* Themed to Gold */
+                  label: 'Book Your Session Now',
+                  target,
+                });
+              });
+            })();
+            </script>
             </div>
-        </div>
     </section>
 
-    <!-- Lead Capture Form -->
-    <section id="book" class="section form-section">
+    <footer>
         <div class="container">
-            <div class="form-wrapper">
-                <h2>Book Your Free 30-Min Financial Health Check-up</h2>
-                <p>Take the first step towards wealth.</p>
-                <form id="leadForm" class="lead-form">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="name" required>
+            <div class="footer-grid">
+                <div>
+                    <h2 class="logo" style="color: var(--white); margin-bottom: 10px;">
+                        <i class="fa-solid fa-chart-line" style="color: var(--gold);"></i> LRY <span>Fintech</span>
+                    </h2>
+                    <p style="color: #bbb; font-size: 0.9rem;">Where Smart Money Meets Smart Advice.<br>AMFI Registered Mutual Fund Distributor.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/photo/?fbid=122104489544966254&set=a.122104489592966254" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/lryfintech" target="_blank" style="background: var(--ig-gradient);"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/rahulyadavlaka-73922217a/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@LakaRahulYadav" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                     </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="email">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Occupation</label>
-                            <select id="occupation">
-                                <option value="">Select...</option>
-                                <option value="Salaried">Salaried</option>
-                                <option value="Business">Business</option>
-                                <option value="Professional">Professional</option>
-                                <option value="Student">Student</option>
-                                <option value="Retired">Retired</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Monthly Income</label>
-                            <select id="income">
-                                <option value="">Select...</option>
-                                <option value="<50k">Less than 50k</option>
-                                <option value="50k-1L">50k - 1 Lakh</option>
-                                <option value="1L-3L">1 Lakh - 3 Lakhs</option>
-                                <option value="3L+">3 Lakhs+</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Primary Financial Goal</label>
-                        <select id="goal">
-                            <option value="Wealth Growth">Wealth Growth</option>
-                            <option value="Child Education">Child Education</option>
-                            <option value="Retirement">Retirement</option>
-                            <option value="Home Buying">Home Buying</option>
-                            <option value="Tax Saving">Tax Saving</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-black btn-block">Book My Free Session</button>
-                    <a href="https://wa.me/918555037991" class="wa-link-small"><i class="fab fa-whatsapp"></i> Or click
-                        here to chat on WhatsApp</a>
-                </form>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Investment Solutions</a></li>
+                        <li><a href="#calculators">Financial Calculators</a></li>
+                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdUmKtyTc8dBwgADftvWJVPDG83tjE5ShJfNVI6EqPeHdBl2w/viewform" target="_blank">Risk Profiler</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fa-solid fa-location-dot"></i> Kanuru, Andhra Pradesh, India</li>
+                        <li><i class="fa-brands fa-whatsapp"></i> +91 8555037991</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact & Social -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2>Connect With Us</h2>
-            <div class="contact-buttons">
-                <a href="https://www.facebook.com/share/19itv77M43/?mibextid=wwXIfr" target="_blank"
-                    class="social-btn fb"><i class="fab fa-facebook-f"></i> Facebook</a>
-                <a href="https://www.instagram.com/lryfintech" target="_blank" class="social-btn insta"><i
-                        class="fab fa-instagram"></i> Instagram</a>
-                <a href="https://www.linkedin.com/in/rahulyadavlaka-73922217a" target="_blank" class="social-btn li"><i
-                        class="fab fa-linkedin-in"></i> LinkedIn</a>
-                <a href="https://wa.me/918555037991" target="_blank" class="social-btn wa"><i
-                        class="fab fa-whatsapp"></i> WhatsApp</a>
+            <div class="copyright">
+                <p>Disclaimer: Mutual fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not an indicator of future returns.</p>
+                <p>&copy; 2026 LRY Fintech Advisory. All Rights Reserved.</p>
             </div>
-            <div class="call-now">
-                <p>Call Now: <a href="tel:+918555037991">+91 8555037991</a></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-brand">LRY FinTech Advisory Services</div>
-            <p class="footer-tagline">Where Smart Money Meets Smart Advice</p>
-            <p class="footer-loc">Serving Andhra Pradesh & Telangana</p>
-            <hr class="footer-divider">
-            <p class="disclaimer">
-                Disclaimer: Mutual Fund investments are subject to market risks, read all scheme related documents
-                carefully.
-                Past performance is not an indicator of future returns. This website is for educational and
-                informational purposes only.
-            </p>
-            <p class="copyright">&copy; 2025 LRY FinTech. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
-</body>
+    <div class="mobile-cta">
+        <a href="https://wa.me/+918555037991" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> Chat</a>
+        <a href="#booking" class="btn-gold" style="color: var(--navy);">Book Call</a>
+    </div>
 
+    <script>
+        // --- CHART.JS INITIALIZATION ---
+        let myChart = null;
+        const ctx = document.getElementById('financialChart').getContext('2d');
+
+        function renderChart(labels, data1, data2, label1, label2) {
+            if (myChart) myChart.destroy();
+            myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [label1, label2],
+                    datasets: [{
+                        data: [data1, data2],
+                        backgroundColor: ['#0B1F3A', '#D4AF37'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // --- CALCULATOR CONFIGURATIONS ---
+        const calcConfigs = {
+            sip: `
+                <div class="input-group">
+                    <label>Monthly Investment (₹)</label>
+                    <input type="number" id="sipAmount" value="10000" oninput="calculateSIP()">
+                </div>
+                <div class="input-group">
+                    <label>Expected Return Rate (p.a %)</label>
+                    <input type="number" id="sipRate" value="12" oninput="calculateSIP()">
+                </div>
+                <div class="input-group">
+                    <label>Time Period (Years)</label>
+                    <input type="number" id="sipYears" value="10" oninput="calculateSIP()">
+                </div>
+            `,
+            education: `
+                <div class="input-group">
+                    <label>Current Cost of Education (₹)</label>
+                    <input type="number" id="edCost" value="1000000" oninput="calculateEd()">
+                </div>
+                <div class="input-group">
+                    <label>Years to College</label>
+                    <input type="number" id="edYears" value="15" oninput="calculateEd()">
+                </div>
+                <div class="input-group">
+                    <label>Inflation Rate (%)</label>
+                    <input type="number" id="edInflation" value="8" oninput="calculateEd()">
+                </div>
+                <div class="input-group">
+                    <label>Expected Return Rate (%)</label>
+                    <input type="number" id="edReturn" value="12" oninput="calculateEd()">
+                </div>
+            `,
+            retirement: `
+                <div class="input-group">
+                    <label>Current Monthly Expenses (₹)</label>
+                    <input type="number" id="retExp" value="50000" oninput="calculateRet()">
+                </div>
+                <div class="input-group">
+                    <label>Years to Retirement</label>
+                    <input type="number" id="retYears" value="20" oninput="calculateRet()">
+                </div>
+                <div class="input-group">
+                    <label>Inflation Rate (%)</label>
+                    <input type="number" id="retInflation" value="6" oninput="calculateRet()">
+                </div>
+            `
+        };
+
+        // --- UI TAB SWITCHING ---
+        function switchTab(tabId) {
+            // Update UI Tabs
+            document.querySelectorAll('.calc-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Inject Inputs
+            document.getElementById('calc-inputs').innerHTML = calcConfigs[tabId];
+            
+            // Trigger specific calculation
+            if(tabId === 'sip') calculateSIP();
+            if(tabId === 'education') calculateEd();
+            if(tabId === 'retirement') calculateRet();
+        }
+
+        // --- CALCULATION LOGIC ---
+        function formatINR(num) {
+            return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(num);
+        }
+
+        function calculateSIP() {
+            const P = parseFloat(document.getElementById('sipAmount').value) || 0;
+            const rate = parseFloat(document.getElementById('sipRate').value) || 0;
+            const years = parseFloat(document.getElementById('sipYears').value) || 0;
+            
+            const n = years * 12;
+            const i = rate / 12 / 100;
+            
+            const investedAmount = P * n;
+            let maturityAmount = 0;
+            
+            if(i === 0) {
+                maturityAmount = investedAmount;
+            } else {
+                maturityAmount = P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+            }
+            
+            const wealthGained = maturityAmount - investedAmount;
+
+            document.getElementById('calc-results').innerHTML = `
+                <p>Invested Amount: ${formatINR(investedAmount)}</p>
+                <p>Est. Returns: ${formatINR(wealthGained)}</p>
+                <h3>Total Value: ${formatINR(maturityAmount)}</h3>
+            `;
+            renderChart(null, investedAmount, wealthGained, 'Invested Amount', 'Est. Returns');
+        }
+
+        function calculateEd() {
+            const cost = parseFloat(document.getElementById('edCost').value) || 0;
+            const years = parseFloat(document.getElementById('edYears').value) || 0;
+            const inflation = parseFloat(document.getElementById('edInflation').value) || 0;
+            const returnRate = parseFloat(document.getElementById('edReturn').value) || 0;
+
+            // Future Cost = PV * (1 + r)^n
+            const futureCost = cost * Math.pow(1 + (inflation/100), years);
+            
+            // Required SIP calculation
+            const i = returnRate / 12 / 100;
+            const n = years * 12;
+            const requiredSIP = futureCost / (((Math.pow(1 + i, n) - 1) / i) * (1 + i));
+
+            document.getElementById('calc-results').innerHTML = `
+                <p>Current Cost: ${formatINR(cost)}</p>
+                <h3 style="color:#fff; font-size:1.2rem;">Future Cost: ${formatINR(futureCost)}</h3>
+                <h3 style="color:var(--gold); margin-top:10px;">Required SIP: ${formatINR(requiredSIP)}/mo</h3>
+            `;
+            renderChart(null, cost, futureCost - cost, 'Current Cost', 'Inflation Impact');
+        }
+
+        function calculateRet() {
+            const exp = parseFloat(document.getElementById('retExp').value) || 0;
+            const years = parseFloat(document.getElementById('retYears').value) || 0;
+            const inflation = parseFloat(document.getElementById('retInflation').value) || 0;
+
+            const futureMonthlyExp = exp * Math.pow(1 + (inflation/100), years);
+            // Rough heuristic: Corpus = Future Annual Exp * 20 (assuming 5% withdrawal rate)
+            const requiredCorpus = (futureMonthlyExp * 12) * 20;
+
+            document.getElementById('calc-results').innerHTML = `
+                <p>Future Monthly Exp: ${formatINR(futureMonthlyExp)}</p>
+                <h3>Target Corpus: ${formatINR(requiredCorpus)}</h3>
+                <p style="font-size:0.8rem; margin-top:5px;">*Assuming life expectancy of 20 years post retirement.</p>
+            `;
+            // Visualization: Just showing the massive corpus vs annual expense to highlight need
+            renderChart(null, futureMonthlyExp * 12, requiredCorpus - (futureMonthlyExp * 12), '1st Year Exp', 'Remaining Corpus Needed');
+        }
+
+        // --- LEAD GENERATION LOGIC ---
+        function captureLeadPrompt() {
+            document.getElementById('leadName').focus();
+            window.location.href = '#risk';
+            alert("To generate a personalized, downloadable proposal based on your calculation, please enter your details.");
+        }
+
+        function handleLeadSubmit(e) {
+            e.preventDefault();
+            const leadData = {
+                name: document.getElementById('leadName').value,
+                phone: document.getElementById('leadPhone').value,
+                goal: document.getElementById('leadGoal').value,
+                date: new Date().toISOString()
+            };
+            
+            // Store in LocalStorage per requirements
+            let leads = JSON.parse(localStorage.getItem('lryLeads')) || [];
+            leads.push(leadData);
+            localStorage.setItem('lryLeads', JSON.stringify(leads));
+
+            // Feedback and Redirect to WhatsApp for Proposal
+            alert("Thanks " + leadData.name + "! Your requirement is saved. Redirecting to WhatsApp to fetch your personalized proposal document from the advisor.");
+            const waMsg = encodeURIComponent(`Hi Laka Rahul, I visited your website and am interested in planning for: ${leadData.goal}. My name is ${leadData.name}. Can we discuss the proposal?`);
+            window.open(`https://wa.me/+918555037991?text=${waMsg}`, '_blank');
+            
+            document.getElementById('leadCaptureForm').reset();
+        }
+
+        // Initialize default view
+        window.onload = () => {
+            document.getElementById('calc-inputs').innerHTML = calcConfigs['sip'];
+            calculateSIP();
+        };
+    </script>
+</body>
 </html>
